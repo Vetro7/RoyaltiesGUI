@@ -1,0 +1,7 @@
+[submodule "cryptonote"]
+	path = cryptonote
+	url = git://github.com/lulworm/bitcedi.git
+[submodule "libqrencode"]
+	path = libqrencode
+	url = git://github.com/fukuchi/libqrencode.git
+	branch = 3.4
