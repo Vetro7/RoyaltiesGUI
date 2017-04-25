@@ -1,5 +1,5 @@
 
-set(CN_PROJECT_NAME "bitcediwallet")
-set(CN_CURRENCY_DISPLAY_NAME "Bitcedi")
-set(CN_CURRENCY_TICKER "BXC")
+set(CN_PROJECT_NAME "royaltieswallet")
+set(CN_CURRENCY_DISPLAY_NAME "Royalties")
+set(CN_CURRENCY_TICKER "XRY")
 set(CN_VERSION 0.1.0)
