@@ -62,7 +62,7 @@ TransactionDetailsDialog::TransactionDetailsDialog(const QModelIndex& _index, QW
       "<span style=\" font-weight:600;\">Amount: </span>%2</p><br>\n"
       "<span style=\" font-weight:600;\">Interest: </span>%3</p><br>\n"
       "<span style=\" font-weight:600;\">Sum: </span>%4</p><br>\n"
-      "<span style=\" font-weight:600;\">Year interest rate: </span>%5</p><br>\n"
+      "<span style=\" font-weight:600;\">Term interest rate: </span>%5</p><br>\n"
       "<span style=\" font-weight:600;\">Term: </span>%6</p><br>\n"
       "<span style=\" font-weight:600;\">Unlock height: </span>%7</p><br>\n"
       "<span style=\" font-weight:600;\">Expected unlock time: </span>%8</p><br>\n"
@@ -74,8 +74,9 @@ TransactionDetailsDialog::TransactionDetailsDialog(const QModelIndex& _index, QW
       "<span style=\" font-weight:600;\">Spending time: </span>%14</p><br>\n";
       depositInfo = depositInfoTemplate.
           arg(depositIndex.sibling(depositIndex.row(), DepositModel::COLUMN_STATE).data().toString()).
-          arg(depositAmount).arg(depositInterest).arg(depositSum).
-          arg(depositIndex.sibling(depositIndex.row(), DepositModel::COLUMN_YEAR_RATE).data().toString()).
+          arg(depositAmount).
+          arg(depositInterest).arg(depositSum).
+          arg(depositIndex.sibling(depositIndex.row(), DepositModel::COLUMN_TERM_RATE).data().toString()).
           arg(depositIndex.sibling(depositIndex.row(), DepositModel::COLUMN_TERM).data().toString()).
           arg(depositIndex.sibling(depositIndex.row(), DepositModel::COLUMN_UNLOCK_HEIGHT).data().toString()).
           arg(depositIndex.sibling(depositIndex.row(), DepositModel::COLUMN_UNLOCK_TIME).data().toString()).
