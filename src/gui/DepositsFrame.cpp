@@ -13,6 +13,7 @@
 #include "MainWindow.h"
 #include "WalletAdapter.h"
 #include "WalletEvents.h"
+#include "NodeAdapter.h"
 
 #include "ui_depositsframe.h"
 
@@ -105,7 +106,8 @@ void DepositsFrame::depositClicked() {
 void DepositsFrame::depositParamsChanged() {
   quint64 amount = CurrencyAdapter::instance().parseAmount(m_ui->m_amountSpin->cleanText());
   quint32 term = m_ui->m_timeSpin->value();
-  quint64 interest = CurrencyAdapter::instance().calculateInterest(amount, term);
+  
+  quint64 interest = CurrencyAdapter::instance().calculateInterest(amount, term, NodeAdapter::instance().getLastKnownBlockHeight());
   qreal termRate = DepositModel::calculateRate(amount, interest);
   m_ui->m_interestLabel->setText(QString("+ %1 %2 (%3 %)").arg(CurrencyAdapter::instance().formatAmount(interest)).
     arg(CurrencyAdapter::instance().getCurrencyTicker().toUpper()).arg(QString::number(termRate * 100, 'f', 2)));

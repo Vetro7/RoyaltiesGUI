@@ -24,4 +24,16 @@ bool DepositListModel::filterAcceptsColumn(int _sourceColumn, const QModelIndex&
     _sourceColumn == DepositModel::COLUMN_UNLOCK_TIME || _sourceColumn == DepositModel::COLUMN_SPENDING_TIME;
 }
 
+bool DepositListModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
+    QVariant leftData = sourceModel()->data(left);
+    QVariant rightData = sourceModel()->data(right);
+    if (leftData.type() == QVariant::Double){
+        return leftData.toDouble() < rightData.toDouble();
+    } 
+    //else if (leftData.type() == QVariant::DateTime){
+    //    return leftData.toDateTime() < rightData.toDateTime();
+    //} 
+    else  return false;
+}
+
 }
