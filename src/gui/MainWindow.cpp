@@ -74,6 +74,12 @@ void MainWindow::connectToSignals() {
   connect(&WalletAdapter::instance(), &WalletAdapter::walletTransactionCreatedSignal, this, [this]() {
     QApplication::alert(this);
   });
+
+  connect(&WalletAdapter::instance(), &WalletAdapter::walletSendTransactionCompletedSignal, this, [this](CryptoNote::TransactionId _transactionId, int _error, const QString& _errorString) {
+    if (_error == 0) {
+      m_ui->m_transactionsAction->setChecked(true);
+    }
+  });
   connect(&NodeAdapter::instance(), &NodeAdapter::peerCountUpdatedSignal, this, &MainWindow::peerCountUpdated, Qt::QueuedConnection);
   connect(m_ui->m_exitAction, &QAction::triggered, qApp, &QApplication::quit);
   connect(m_ui->m_messagesFrame, &MessagesFrame::replyToSignal, this, &MainWindow::replyTo);
@@ -309,6 +315,15 @@ void MainWindow::backupWallet() {
     }
 }
 
+void MainWindow::resetWallet() {
+  Q_ASSERT(WalletAdapter::instance().isOpen());
+  if (QMessageBox::warning(this, tr("Warning"), tr("Your wallet will be reset and restored from blockchain.\n"
+    "Are you sure?"), QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok) {
+    WalletAdapter::instance().reset();
+    WalletAdapter::instance().open("");
+  }
+}
+
 void MainWindow::encryptWallet() {
   if (Settings::instance().isEncrypted()) {
     bool error = false;
@@ -421,6 +436,7 @@ void MainWindow::walletOpened(bool _error, const QString& _error_text) {
     m_encryptionStateIconLabel->show();
     m_synchronizationStateIconLabel->show();
     m_ui->m_backupWalletAction->setEnabled(true);
+    m_ui->m_resetAction->setEnabled(true);
     encryptedFlagChanged(Settings::instance().isEncrypted());
 
     QList<QAction*> tabActions = m_tabActionGroup->actions();
@@ -439,6 +455,7 @@ void MainWindow::walletClosed() {
   m_ui->m_backupWalletAction->setEnabled(false);
   m_ui->m_encryptWalletAction->setEnabled(false);
   m_ui->m_changePasswordAction->setEnabled(false);
+  m_ui->m_resetAction->setEnabled(false);
   m_ui->m_overviewFrame->hide();
   m_ui->m_sendFrame->hide();
   m_ui->m_transactionsFrame->hide();
