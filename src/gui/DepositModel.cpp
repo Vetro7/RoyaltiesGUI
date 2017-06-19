@@ -206,7 +206,7 @@ QVariant DepositModel::getDisplayRole(const QModelIndex& _index) const {
         return "-";
       }
 
-      return getExpectedTimeForHeight(unlockHeight).toString("dd-MM-yy HH:mm");
+      return getExpectedTimeForHeight(unlockHeight).toString("yyyy-MM-dd HH:mm");
     } else {
       return QDateTime();
     }
