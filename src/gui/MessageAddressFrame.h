@@ -1,6 +1,5 @@
-// Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2014-2017 XDN developers
-// Copyright (c) 2016-2017 BXC developers
+// Copyright (c) 2011-2016 The Cryptonote developers
+// Copyright (c) 2015-2016 XDN developers
 // Copyright (c) 2017 Royalties developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -10,46 +9,37 @@
 #include <QFrame>
 
 namespace Ui {
-class TransferFrame;
+  class MessageAddressFrame;
 }
 
 namespace WalletGui {
 
 class AliasProvider;
 
-class TransferFrame : public QFrame {
+class MessageAddressFrame : public QFrame {
   Q_OBJECT
-  Q_DISABLE_COPY(TransferFrame)
+  Q_DISABLE_COPY(MessageAddressFrame)
 
 public:
-  TransferFrame(QWidget* _parent);
-  ~TransferFrame();
+  MessageAddressFrame(QWidget* _parent);
+  ~MessageAddressFrame();
 
   QString getAddress() const;
-  QString getLabel() const;
-  qreal getAmount() const;
-  QString getAmountString() const;
-  QString getComment() const;
-
   void disableRemoveButton(bool _disable);
-  void setAddress(const QString& _address);
 
 protected:
   void timerEvent(QTimerEvent* _event) Q_DECL_OVERRIDE;
 
 private:
-  QScopedPointer<Ui::TransferFrame> m_ui;
+  QScopedPointer<Ui::MessageAddressFrame> m_ui;
   AliasProvider* m_aliasProvider;
-  int m_addressInputTimer;
+  int m_addressInputTimerId;
 
   void onAliasFound(const QString& _name, const QString& _address);
+
   Q_SLOT void addressBookClicked();
   Q_SLOT void addressEdited(const QString& _text);
-  Q_SLOT void commentEdited(const QString& _text);
   Q_SLOT void pasteClicked();
-
-Q_SIGNALS:
-  void commentEditedSignal();
 };
 
 }
