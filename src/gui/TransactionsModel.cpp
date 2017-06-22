@@ -264,17 +264,17 @@ QVariant TransactionsModel::getDecorationRole(const QModelIndex& _index) const {
   if(_index.column() == COLUMN_STATE) {
     quint64 numberOfConfirmations = _index.data(ROLE_NUMBER_OF_CONFIRMATIONS).value<quint64>();
     switch (numberOfConfirmations) {
-    case 0:
+      case 0:
       return QPixmap(":icons/unconfirmed");
-    case 1:
+    case 1: case 2:
       return QPixmap(":icons/clock1");
-    case 2:
+    case 3: case 4:
       return QPixmap(":icons/clock2");
-    case 3:
+    case 5: case 6:
       return QPixmap(":icons/clock3");
-    case 4:
+    case 7: case 8:
       return QPixmap(":icons/clock4");
-    case 5:
+    case 9:
       return QPixmap(":icons/clock5");
     default:
       return QPixmap(":icons/transaction");
