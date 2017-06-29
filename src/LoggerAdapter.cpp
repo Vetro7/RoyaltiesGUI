@@ -21,7 +21,7 @@ void LoggerAdapter::init() {
   Common::JsonValue& cfgLoggers = loggerConfiguration.insert("loggers", Common::JsonValue::ARRAY);
   Common::JsonValue& fileLogger = cfgLoggers.pushBack(Common::JsonValue::OBJECT);
   fileLogger.insert("type", "file");
-  fileLogger.insert("filename", Settings::instance().getDataDir().absoluteFilePath("bitcediwallet.log").toStdString());
+  fileLogger.insert("filename", Settings::instance().getDataDir().absoluteFilePath("Royaltieswallet.log").toStdString());
   fileLogger.insert("level", static_cast<int64_t>(Logging::INFO));
   m_logManager.configure(loggerConfiguration);
 }
