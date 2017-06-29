@@ -29,7 +29,7 @@ using namespace WalletGui;
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
-  app.setApplicationName("bitcediwallet");
+  app.setApplicationName("Royaltieswallet");
   app.setApplicationVersion(Settings::instance().getVersion());
   app.setQuitOnLastWindowClosed(false);
 
