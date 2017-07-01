@@ -183,7 +183,7 @@ QDateTime NodeAdapter::getLastLocalBlockTimestamp() const {
 
 void NodeAdapter::peerCountUpdated(Node& _node, size_t _count) {
   Q_UNUSED(_node);
-  Q_EMIT peerCountUpdatedSignal(_count);
+  //Q_EMIT peerCountUpdatedSignal(_count); //! this causes a crash needs debugging. disabling for now
 }
 
 void NodeAdapter::localBlockchainUpdated(Node& _node, uint64_t _height) {

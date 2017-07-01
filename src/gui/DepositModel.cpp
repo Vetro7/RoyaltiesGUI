@@ -195,7 +195,7 @@ QVariant DepositModel::getDisplayRole(const QModelIndex& _index) const {
       return "-";
     }
 
-    return unlockHeight;
+    return unlockHeight > 0 ? unlockHeight - 1 : 0;
   }
 
   case COLUMN_UNLOCK_TIME: {

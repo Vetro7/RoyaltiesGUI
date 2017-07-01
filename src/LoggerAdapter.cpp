@@ -17,12 +17,19 @@ LoggerAdapter& LoggerAdapter::instance() {
 
 void LoggerAdapter::init() {
   Common::JsonValue loggerConfiguration(Common::JsonValue::OBJECT);
-  loggerConfiguration.insert("globalLevel", static_cast<int64_t>(Logging::INFO));
+  int64_t logLevel =
+    #ifdef DEBUG
+	  Logging::TRACE
+	#else
+		Logging::INFO
+	#endif
+  ;
+  loggerConfiguration.insert("globalLevel", logLevel);
   Common::JsonValue& cfgLoggers = loggerConfiguration.insert("loggers", Common::JsonValue::ARRAY);
   Common::JsonValue& fileLogger = cfgLoggers.pushBack(Common::JsonValue::OBJECT);
   fileLogger.insert("type", "file");
-  fileLogger.insert("filename", Settings::instance().getDataDir().absoluteFilePath("bitcediwallet.log").toStdString());
-  fileLogger.insert("level", static_cast<int64_t>(Logging::INFO));
+  fileLogger.insert("filename", Settings::instance().getDataDir().absoluteFilePath("royalties.log").toStdString());
+  fileLogger.insert("level", logLevel);
   m_logManager.configure(loggerConfiguration);
 }
 
