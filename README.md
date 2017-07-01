@@ -1,4 +1,4 @@
-## Building Royalties
+## Building Royalties Wallet
 
 ### On *nix:
 
