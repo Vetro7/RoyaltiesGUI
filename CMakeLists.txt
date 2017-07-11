@@ -272,7 +272,7 @@ elseif (UNIX)
 
     install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
     install(FILES src/royaltieswallet.desktop DESTINATION share/applications)
-    install(FILES src/images/cryptonote.png DESTINATION share/pixmaps RENAME bitcedi.png)
+    install(FILES src/images/cryptonote.png DESTINATION share/pixmaps RENAME royalties.png)
     install(FILES copyright DESTINATION share/doc/royaltieswallet)
 
     if (NOT RPMBUILD)
