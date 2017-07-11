@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Royalties Wallet
+Comment=Royalties wallet
+Exec=royaltieswallet
+Terminal=false
+Type=Application
+Icon=Royalties
+MimeType=x-scheme-handler/royaltieswallet;
+Categories=Office;Finance;

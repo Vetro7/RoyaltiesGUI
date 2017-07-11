@@ -1,0 +1,8 @@
+build/
+nbproject/
+*~
+CMakeLists.txt.user
+uncrustify.cfg
+*.o
+*.a
+CMakeFiles
