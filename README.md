@@ -48,7 +48,15 @@ The above commands are for 64 bit Windows. If you are running 32 bit, simply lea
 Be sure to change the version number and year to the version of Visual Studio that you will be using for compiling. 
 It may also be possible to build with other compilers, like MinGW.
 
+###To Build Packages:
+To build a DEB file, from the directory with this file, run:
+```
+make package-deb
+```
 
-
+To build an RPM file, from the directory with this file, run:
+```
+make package-rpm
+```
 
 Good luck!

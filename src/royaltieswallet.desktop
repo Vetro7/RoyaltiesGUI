@@ -5,6 +5,6 @@ Comment=Royalties wallet
 Exec=royaltieswallet
 Terminal=false
 Type=Application
-Icon=Royalties
+Icon=royalties
 MimeType=x-scheme-handler/royaltieswallet;
 Categories=Office;Finance;

@@ -24,6 +24,16 @@ test-release: build-release
 
 all-release: build-release
 
+package-deb: cmake-release
+	mkdir -p build/release
+	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release ../..
+	cd build/release && $(MAKE) package
+
+package-rpm: 
+	mkdir -p build/release
+	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release -D PACKRPM=1 ../..
+	cd build/release && $(MAKE) package
+	
 clean:
 	rm -rf build
 
