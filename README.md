@@ -2,46 +2,31 @@
 
 ### On *nix:
 
-Dependencies: GCC 4.7.3 or later, CMake 2.8.6 or later, Qt 5.9 or later and Boost 1.55 or later.
+Dependencies: GCC 4.7.3 or later, CMake 2.8.6 or later, Boost 1.55 or later, and Qt 5.9 or later.
 
 You may download them from:
 
 - http://gcc.gnu.org/
 - http://www.cmake.org/
 - http://www.boost.org/
+- https://www.qt.io
 
 Alternatively, it may be possible to install them using a package manager.
 
-
----Acquire the latest source---
-VIA GIT run these commands in a directory you want the source:
-git clone https://github.com/Vetro7/RoyaltiesWallet.git
-cd RoyaltiesWallet
+To acquire the source via git and build the release version, run the following commands:
+```
+cd ~
+git clone https://github.com/Vetro7/RoyaltiesGUI
+cd RoyaltiesGUI
 git submodule init
 git submodule update --remote
-
----Build---
-
-with make (single-threaded build):
-Run these commands
-```
-mkdir build
-cd build
-cmake ..
-cmake --build .
+make build-release
+mkdir bin && mv build/release/src/royaltieswallet bin/
+make clean
 ```
 
-with Ninja (multi-threaded build; faster with multi-core machines):
-If you don't have Ninja installed... 
-	you can get it from https://ninja-build.org/ .
-	Or, if you are on Ubuntu, simply run the command: "sudo apt install ninja-build" (without the quotes).
-Run these commands (with Ninja installed)
-```
-mkdir build
-cd build
-cmake -G Ninja ..
-cmake --build .
-```
+The executable is now in the bin directory.
+For a faster build, you can add -jX to the end of the make instruction, where X is the number of threads to use. Example: "make build-release -j8", for 4 cores with 2 threads each.
 
 
 ### On Windows:
@@ -51,14 +36,19 @@ Dependencies: MSVC 2013 or later, CMake 2.8.6 or later, and Boost 1.55 or later.
 - http://www.cmake.org/
 - http://www.boost.org/
 
-To build, change to a directory where this file is located, and run this commands:
+To build, change to a directory where this file is located, and run the following commands:
 ```
 mkdir build
 cd build
-cmake -G "Visual Studio 12 Win64" ..
+cmake -G "Visual Studio 14 2015 Win64" ..
 ```
+And then open and build the generated solution file, located in the build directory, with Visual Studio.
 
-And then open and build generated project file with visual studio.
+The above commands are for 64 bit Windows. If you are running 32 bit, simply leave off the "Win64". Example: 'cmake -G "Visual Studio 14 2015".
+Be sure to change the version number and year to the version of Visual Studio that you will be using for compiling. 
+It may also be possible to build with other compilers, like MinGW.
+
+
 
 
 Good luck!
