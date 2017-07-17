@@ -26,7 +26,7 @@ all-release: build-release
 
 package-deb: cmake-release
 	mkdir -p build/release
-	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release ../..
+	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release -D PACKRPM=0 ../..
 	cd build/release && $(MAKE) package
 
 package-rpm: 
