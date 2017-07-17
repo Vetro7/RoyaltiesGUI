@@ -33,7 +33,12 @@ package-rpm:
 	mkdir -p build/release
 	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release -D PACKRPM=1 ../..
 	cd build/release && $(MAKE) package
-	
+
+package-dmg:
+	mkdir -p build/release
+	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release ../..
+	cd build/release && $(MAKE) package
+
 clean:
 	rm -rf build
 
