@@ -36,6 +36,7 @@ Dependencies: MSVC 2013 or later, CMake 2.8.6 or later, and Boost 1.55 or later.
 - http://www.cmake.org/
 - http://www.boost.org/
 
+
 To build, change to a directory where this file is located, and run the following commands:
 ```
 mkdir build
@@ -58,5 +59,6 @@ To build an RPM file, from the directory with this file, run:
 ```
 make package-rpm
 ```
+
 
 Good luck!

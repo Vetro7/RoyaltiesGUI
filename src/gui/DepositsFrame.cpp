@@ -95,6 +95,7 @@ void DepositsFrame::walletActualBalanceUpdated(quint64 _balance) {
   m_ui->m_balanceLabel->setText(CurrencyAdapter::instance().formatAmount(_balance));
 }
 
+
 void DepositsFrame::reset() {
   actualDepositBalanceUpdated(0);
   pendingDepositBalanceUpdated(0);
