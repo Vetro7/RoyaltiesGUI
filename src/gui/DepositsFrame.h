@@ -30,6 +30,7 @@ private:
 
   void actualDepositBalanceUpdated(quint64 _balance);
   void pendingDepositBalanceUpdated(quint64 _balance);
+  void walletActualBalanceUpdated(quint64 _balance);
   void reset();
 
   Q_SLOT void depositClicked();
