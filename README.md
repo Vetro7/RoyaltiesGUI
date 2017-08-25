@@ -20,24 +20,24 @@ git clone https://github.com/Vetro7/RoyaltiesGUI
 cd RoyaltiesGUI
 git submodule init
 git submodule update --remote
-make build-release
-mkdir bin && mv build/release/royaltieswallet bin/
-make clean
+./configure
+make
 ```
 
 The executable is now in the bin directory.
 For a faster build, you can add -jX to the end of the make instruction, where X is the number of threads to use. Example: "make build-release -j8", for 4 cores with 2 threads each.
+You may also want to run `make clean` after to remove the build files, which are all stored under the build directory.
 
 
 ### On Windows:
-Dependencies: MSVC 2013 or later, CMake 2.8.6 or later, and Boost 1.55 or later. You may download them from:
+Dependencies: MSVC 2013 or later, CMake 2.8.6 or later, and Boost 1.55, and Qt 5.9 or later. You may download them from:
 
 - http://www.microsoft.com/
 - http://www.cmake.org/
 - http://www.boost.org/
+- https://www.qt.io
 
-
-To build, change to a directory where this file is located, and run the following commands:
+To build, change to the directory where this file is located, and run the following commands:
 ```
 mkdir build
 cd build
