@@ -20,9 +20,9 @@ git clone https://github.com/Vetro7/RoyaltiesGUI
 cd RoyaltiesGUI
 git submodule init
 git submodule update --remote
-make build-release
-mkdir bin && mv build/release/royaltieswallet bin/
-make clean
+./configure
+make -jX #where "X" is the number of threads to use (speeds up compiling on multi-core systems)
+make clean #optional, to clean up build files after
 ```
 
 The executable is now in the bin directory.
